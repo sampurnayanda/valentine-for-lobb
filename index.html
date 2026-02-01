@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? 💝</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Poppins', cursive;
+      background: linear-gradient(135deg, #ffd6e8, #fff1f7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+      max-width: 420px;
+      animation: popIn 1s ease;
+      position: relative;
+    }
+
+    h1 {
+      color: #ff4f9a;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .cats {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #yesBtn {
+      background: #ff4f9a;
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 79, 154, 0.4);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #ffe1ec;
+      color: #ff4f9a;
+      position: relative;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .final {
+      font-size: 1.3rem;
+      color: #ff2f84;
+      margin-top: 10px;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4f9a;
+      font-size: 20px;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-800px) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <div class="cats">🐱💐🐱</div>
+    <h1>Hey Lobb 💖</h1>
+    <p>
+      From debugging life together to sharing soft silences,
+      every moment with you feels like magic ✨<br /><br />
+      Will you be my Valentine this year? 🌷
+    </p>
+
+    <div class="buttons" id="buttons">
+      <button id="yesBtn">YES 💘</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <div class="hidden" id="finalMessage">
+      <div class="final">YAY!!! 🥹💞<br />You’re my forever Valentine 💐🐾</div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const buttons = document.getElementById('buttons');
+    const finalMessage = document.getElementById('finalMessage');
+
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yesBtn.addEventListener('click', () => {
+      buttons.classList.add('hidden');
+      finalMessage.classList.remove('hidden');
+      startHearts();
+    });
+
+    function startHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerText = '💖';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.bottom = '-20px';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
